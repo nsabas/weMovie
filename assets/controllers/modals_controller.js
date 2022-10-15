@@ -28,11 +28,9 @@ export default class extends Controller {
             this.openModal();
 
             let path = this.element.getAttribute('data-video-uri').replace('__id__', movie.id);
-            console.log(path);
             axios
                 .get(path)
                 .then((response) => {
-                    console.log(response);
                     this.iframeUrlTarget.setAttribute('src', response.data.link);
                 })
 

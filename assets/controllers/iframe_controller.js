@@ -6,7 +6,6 @@ export default class extends Controller {
         axios
             .get(this.element.getAttribute('data-video-uri'))
             .then((response) => {
-                console.log(response);
                 this.element.setAttribute('src', response.data.link);
             })
     }
