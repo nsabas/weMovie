@@ -1,0 +1,12 @@
+<div>
+    <ul>
+        {% if genres is defined %}
+            {% for genre in genres %}
+                <li>
+                    <label for="checkbox-genre-{{ loop.index }}">{{ genre.name }}</label>
+                    <input id="checkbox-genre-{{ loop.index }}" type="checkbox" value="{{ genre.id }}" >
+                </li>
+            {% endfor %}
+        {% endif %}
+    </ul>
+</div>
