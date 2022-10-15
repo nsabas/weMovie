@@ -53,7 +53,9 @@ class RequestManager
         array $requestPath,
         array $parameters = [],
         array $urlParam = [],
-        bool $toCache = false){
+        bool $toCache = false
+    )
+    {
         if ($toCache){
             return $this->cache->get(
                 $this->generateCacheKey($requestPath[self::PATH], $parameters),
