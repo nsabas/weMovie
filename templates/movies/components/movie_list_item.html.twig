@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-2">
             {% if movie.posterPath %}
-                <img src="{{ path('image_render', { name: movie.posterPath|trim('/'), size: constant('App\\API\\ServicePath\\ImageRequest::LOGO_SIZE') }) }}" alt="">
+                <img src="{{ path('image_render', { name: movie.posterPath|trim('/'), size: constant('App\\ServicePath\\ImageRequest::LOGO_SIZE') }) }}" alt="">
             {% else %}
                 <img class="img-logo" src="{{ asset('build/images/images-not-found.png') }}" alt="">
             {% endif %}

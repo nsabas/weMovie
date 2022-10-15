@@ -17,7 +17,7 @@
             <iframe {{ stimulus_controller('iframe')}} data-video-uri="{{ path('video_details_movie', {movieId: topTrendingMovie.id}) }}" class="banner-box-item" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <div class="banner-box-item-overlay" >
                 {% if topTrendingMovie.posterPath %}
-                    <img src="{{ path('image_render', { name: topTrendingMovie.posterPath|trim('/'), size: constant('App\\API\\ServicePath\\ImageRequest::LOGO_SIZE') }) }}" alt="lol">
+                    <img src="{{ path('image_render', { name: topTrendingMovie.posterPath|trim('/'), size: constant('App\\ServicePath\\ImageRequest::LOGO_SIZE') }) }}" alt="lol">
                 {% endif %}
                 <p>{{ topTrendingMovie.title|default('') }}</p>
             </div>
