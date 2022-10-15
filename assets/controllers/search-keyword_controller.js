@@ -27,6 +27,11 @@ export default class extends Controller {
                         let autocompleteList = response.data.results;
                         let containerListElement = document.createElement('ul');
                         containerListElement.classList.add('autocomplete-list')
+
+                        containerListElement.addEventListener('mouseleave', (e) => {
+                            containerListElement.style.display = 'none';
+                        });
+
                         autocompleteList.forEach((result) => {
                            let elem = document.createElement('li');
 
