@@ -7,11 +7,11 @@
         <div class="banner-box">
             <iframe class="banner-box-item" {{ stimulus_target('modals', 'iframeUrl')}} src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        <h4 {{ stimulus_target('modals', 'title')}} ></h4>
-        <div>
-            <div {{ stimulus_target('modals', 'title')}} ></div>
-            <div {{ stimulus_target('modals', 'rate')}} ></div>
-            <div {{ stimulus_target('modals', 'userCount')}} ></div>
+        <div class="row">
+            <h4 class="col" {{ stimulus_target('modals', 'title')}} ></h4>
+            <div class="col" {{ stimulus_target('modals', 'title')}}></div>
+            <div class="col" {{ stimulus_target('modals', 'rate')}}></div>
+            <div class="col" {{ stimulus_target('modals', 'userCount')}}></div>
         </div>
     </div>
 
