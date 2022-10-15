@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Tests;
+namespace App\Tests\API;
 
 use App\API\RequestManager;
-
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Serializer\SerializerInterface;
