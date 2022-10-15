@@ -1,0 +1,14 @@
+{% if list is defined and list is not empty %}
+{% set request = {} %}
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        {% if list.page - 1 >= 1 %}
+            <li class="page-item"><a class="page-link" href="{{ path('home', request|merge(app.request.query)|merge({'page' : list.page - 1})) }}">{{ list.page - 1 }}</a></li>
+        {% endif %}
+        <li class="page-item {% if list.page %}active{% endif %}" ><a class="page-link" href="{{ path('home', request|merge(app.request.query)|merge({'page' : (list.page)})) }}">{{ list.page }}</a></li>
+        {% if list.page + 1 <= list.totalPages %}
+            <li class="page-item"><a class="page-link" href="{{ path('home', request|merge(app.request.query)|merge({'page' : list.page + 1})) }}">{{ list.page + 1 }}</a></li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}

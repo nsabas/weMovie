@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme genreFilterForm 'bootstrap_5_horizontal_layout.html.twig' %}
+
+{% block body %}
+    <div class="container" >
+        <div class="row">
+            <h2 class="col-10">A Propos de We Movies</h2>
+            <div class="col-2">
+                <input {{ stimulus_controller('search-keyword')}} type="text" placeholder="recherche" data-search-uri="{{ absolute_url(path('search_autocomplete', { keyword: '__keyword__' })) }}">
+                <button>search</button>
+            </div>
+        </div>
+    </div>
+    <div class="banner-box">
+        {% if topTrendingMovie %}
+            <iframe {{ stimulus_controller('iframe')}} data-video-uri="{{ path('video_details_movie', {movieId: topTrendingMovie.id}) }}" class="banner-box-item" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="banner-box-item-overlay" >
+                {% if topTrendingMovie.posterPath %}
+                    <img src="{{ path('image_render', { name: topTrendingMovie.posterPath|trim('/'), size: constant('App\\API\\ServicePath\\ImageRequest::LOGO_SIZE') }) }}" alt="lol">
+                {% endif %}
+                <p>{{ topTrendingMovie.title|default('') }}</p>
+            </div>
+        {% endif %}
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-3 border border-1 mt-3 p-2">
+                {{ form(genreFilterForm) }}
+            </div>
+            <div class="col-9">
+                {% if movies and movies.results %}
+                    {% for movie in movies.results %}
+                        {{ include('movies/components/movie_list_item.html.twig', { movie: movie }) }}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            {{ include('movies/components/pagination.html.twig', { list: movies }) }}
+        </div>
+
+    </div>
+    {{ include('movies/components/modal.html.twig') }}
+{% endblock %}
+
