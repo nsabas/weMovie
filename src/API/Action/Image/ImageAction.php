@@ -52,7 +52,11 @@ class ImageAction
      */
     public function __invoke(string $name, string $size)
     {
-        return new Response($this->requestManager->getImage($name, $size)->getContent(), Response::HTTP_OK, [ 'Content-Type' => 'image/jpeg' ]);
+        try {
+            return new Response($this->requestManager->getImage($name, $size)->getContent(), Response::HTTP_OK, [ 'Content-Type' => 'image/jpeg' ]);
+        } catch (\Exception $exception) {
+            return new JsonResponse([ 'message' => 'error image not found' ], Response::HTTP_NOT_FOUND);
+        }
     }
 
 
